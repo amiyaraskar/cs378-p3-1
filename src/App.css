@@ -3,6 +3,43 @@
   Below, you can see an example of a class called "menu" that changes the color of the text to blue. Modify according to your needs.
 */
 
+.logo {
+  max-width: 100%;
+}
+
+.header {
+  width: 100%;
+  text-align: center;
+  padding: 20%;
+}
+
+.subheader {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 18%;
+}
+
+.subheading {
+  font-family: 'Satisfy', cursive;
+  font-size: 160%;
+  color: #ac8871;
+}
+
 .menu {
-  color: blue;
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+}
+
+.row {
+  padding: 3%;
+}
+
+.card-text {
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.card-text-price {
+  padding-top: 8%;
 }
