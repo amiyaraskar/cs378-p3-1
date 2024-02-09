@@ -10,7 +10,7 @@
 .header {
   width: 100%;
   text-align: center;
-  padding: 20%;
+  padding: 25%;
 }
 
 .subheader {
@@ -21,7 +21,7 @@
 
 .subheading {
   font-family: 'Satisfy', cursive;
-  font-size: 160%;
+  font-size: 165%;
   color: #ac8871;
 }
 
@@ -36,8 +36,8 @@
 }
 
 .card-text {
-  padding-top: 2%;
-  padding-bottom: 2%;
+  padding-top: 3%;
+  padding-bottom: 3%;
 }
 
 .card-text-price {
