@@ -24,7 +24,7 @@ const MenuItem = ({ title, description, imageName, price }) => {
                     </div>
                     <div className="card-footer d-flex align-items-center justify-content-between">
                         <p className="card-text-price">Price: ${price}</p>
-                        <button className="rounded-3">
+                        <button className="rounded-4">
                             Add
                         </button>
                     </div>
