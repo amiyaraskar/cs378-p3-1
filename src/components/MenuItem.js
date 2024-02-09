@@ -14,7 +14,7 @@ const MenuItem = ({ title, description, imageName, price }) => {
                         src={require(`../images/${imageName}`)} 
                         alt={title} 
                         className="rounded-3" 
-                        style={{ width: "110%" }}
+                        style={{ width: "115%" }}
                     />
                 </div>
                 <div className="col-8">
@@ -22,7 +22,7 @@ const MenuItem = ({ title, description, imageName, price }) => {
                         <h5 className="card-title">{title}</h5>
                         <p className="card-text">{description}</p>
                     </div>
-                    <div className="card-footer d-flex justify-content-between align-items-center">
+                    <div className="card-footer d-flex align-items-center justify-content-between">
                         <p className="card-text-price">Price: ${price}</p>
                         <button className="rounded-3">
                             Add
