@@ -1,4 +1,5 @@
-import React from 'react';
+import {React, useState} from 'react';
+import App from '../App';
 
 // This is a functional component that represents a single menu item. It currently takes in the title and displays it in an h2 element.
 // Modify the component to take in all the other properties of a menu item you need and display them in the component.
@@ -6,6 +7,18 @@ import React from 'react';
 // Hint: You can use the image name to get the image from the images folder.
 
 const MenuItem = ({ imageName, title, description, price }) => {
+    const [quantity, setQuantity] = useState(0);
+
+    const handleIncrement = () => {
+        setQuantity(quantity + 1);
+    };
+
+    const handleDecrement = () => {
+        if (quantity > 0) {
+            setQuantity(quantity - 1);
+        }
+    };
+
     return (
         <div className="container">
             <div className="row">
@@ -24,9 +37,11 @@ const MenuItem = ({ imageName, title, description, price }) => {
                     </div>
                     <div className="card-footer d-flex align-items-center justify-content-between">
                         <p className="card-text-price">Price: ${price}</p>
-                        <button className="rounded-4">
-                            Add
-                        </button>
+                        <div className="quantity-control">
+                            <button className="quantity-btn circular" onClick={handleDecrement}> - </button>
+                                <span className="quantity"> {quantity} </span>
+                            <button className="quantity-btn circular" onClick={handleIncrement}> + </button>
+                        </div>
                     </div>
                 </div>
             </div>

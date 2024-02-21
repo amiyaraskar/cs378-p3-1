@@ -2,6 +2,7 @@ import './App.css';
 import MenuItem from './components/MenuItem';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import Header from './components/Header';
+import { useState } from 'react';
 // This imports bootstrap css styles. You can use bootstrap or your own classes by using the className attribute in your elements.
 
 // Menu data. An array of objects where each object represents a menu item.
@@ -12,70 +13,70 @@ const menuItems = [
   {
     id: 1,
     title: 'Gyoza',
-    description: 'Japanese dumplings',
+    description: 'Japanese Dumplings',
     imageName: 'gyoza.png',
     price: 5.99,
   },
   {
     id: 2,
     title: 'Sushi',
-    description: 'Japanese rice rolls',
+    description: 'Japanese Rice Rolls',
     imageName: 'sushi.png',
     price: 6.99,
   },
   {
     id: 3,
     title: 'Ramen',
-    description: 'Japanese noodle soup',
+    description: 'Japanese Noodle Soup',
     imageName: 'ramen.png',
     price: 7.99,
   },
   {
     id: 4,
     title: 'Matcha Cake',
-    description: 'Japanese green tea cake',
+    description: 'Green Tea Cake',
     imageName: 'matcha-cake.png',
     price: 4.99,
   },
   {
     id: 5,
     title: 'Mochi',
-    description: 'Japanese rice cake',
+    description: 'Rice Cake',
     imageName: 'mochi.png',
     price: 3.99,
   },
   {
     id: 6,
     title: 'Yakitori',
-    description: 'Japanese skewered chicken',
+    description: 'Japanese Skewered Chicken',
     imageName: 'yakitori.png',
     price: 2.99,
   },
   {
     id: 7,
     title: 'Takoyaki',
-    description: 'Japanese octopus balls',
+    description: 'Japanese Ooctopus Balls',
     imageName: 'takoyaki.png',
     price: 5.99,
   },
   {
     id: 8,
     title: 'Sashimi',
-    description: 'Japanese raw fish',
+    description: 'Japanese Raw Fish',
     imageName: 'sashimi.png',
     price: 8.99,
   },
   {
     id: 9,
     title: 'Okonomiyaki',
-    description: 'Japanese savory pancake',
+    description: 'Japanese Savory Pancake',
     imageName: 'okonomiyaki.png',
     price: 6.99,
   },
   {
     id: 10,
     title: 'Katsu Curry',
-    description: 'Japanese curry with fried pork',
+    description: 'Curry with Fried Pork',
     imageName: 'katsu-curry.png',
     price: 9.99,
   }
@@ -104,6 +105,7 @@ function App() {
         {menuItems.map((menuItem) => (
           <MenuItem
             key={menuItem.id}
+            id={menuItem.id}
             title={menuItem.title}
             description={menuItem.description}
             imageName={menuItem.imageName}
