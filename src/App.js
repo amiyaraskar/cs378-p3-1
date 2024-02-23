@@ -91,6 +91,57 @@ const menuHeader = [
 ]
 
 function App() {
+  const [cart, setCart] = useState(menuItems.map(item => ({ ...item, quantity: 0 })));
+  const [subtotal, setSubtotal] = useState(0);
+
+  const addToCart = (itemId) => {
+    setCart(prevCart => {
+      const updatedCart = prevCart.map(item =>
+        (item.id === itemId) ? { ...item, quantity: item.quantity + 1 } : item
+      );
+
+      updateSubtotal(updatedCart);
+
+      return updatedCart;
+    });
+  };
+  
+  const removeFromCart = (itemId) => {
+    setCart(prevCart => {
+      const updatedCart = prevCart.map(item =>
+        (item.id === itemId && item.quantity > 0) ? { ...item, quantity: item.quantity - 1 } : item
+      );
+
+      updateSubtotal(updatedCart);
+
+      return updatedCart;
+    });
+  };
+  
+  const clearCart = () => {
+    setCart(prevCart => prevCart.map(item => ({ ...item, quantity: 0 })));
+    
+    setSubtotal(0);
+  };
+
+  const updateSubtotal = (updatedCart) => {
+    const total = updatedCart.reduce((acc, item) => acc + item.quantity * item.price, 0);
+
+    setSubtotal(total);
+  };
+  
+  const placeOrder = () => {
+    const orderedItems = cart.filter(item => item.quantity > 0);
+
+    if (orderedItems.length === 0) {
+      alert('No items in the cart.');
+    } else {
+      const orderSummary = orderedItems.map(item => `${item.quantity} x ${item.title}`).join('\n');
+      alert(`Order Placed!\n\n${orderSummary}\n\nTotal: $${subtotal.toFixed(2)}`);
+      clearCart();
+    }
+  };
+
   return (
     <div>
       {menuHeader.map((header) => (
@@ -105,13 +156,23 @@ function App() {
         {menuItems.map((menuItem) => (
           <MenuItem
             key={menuItem.id}
-            id={menuItem.id}
             title={menuItem.title}
             description={menuItem.description}
             imageName={menuItem.imageName}
             price={menuItem.price}
+            quantity={cart.find(item => item.id === menuItem.id).quantity}
+            onAdd={() => addToCart(menuItem.id)}
+            onRemove={() => removeFromCart(menuItem.id)}
           />
         ))}
+      </div>
+
+      <div className="cart" >
+        <p>Subtotal: ${subtotal.toFixed(2)}</p>
+        <button className="rounded-3" style={{ backgroundColor: '#ADD8E6' }} onClick={placeOrder}>
+          Order
+        </button>
+        <button className="rounded-3" onClick={clearCart}>Clear All</button>
       </div>
     </div>
   );

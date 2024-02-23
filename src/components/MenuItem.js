@@ -6,19 +6,7 @@ import App from '../App';
 // Use bootstrap to style the elements so that it looks like the mockup in the assignment.
 // Hint: You can use the image name to get the image from the images folder.
 
-const MenuItem = ({ imageName, title, description, price }) => {
-    const [quantity, setQuantity] = useState(0);
-
-    const handleIncrement = () => {
-        setQuantity(quantity + 1);
-    };
-
-    const handleDecrement = () => {
-        if (quantity > 0) {
-            setQuantity(quantity - 1);
-        }
-    };
-
+const MenuItem = ({ title, description, imageName, price, quantity, onAdd, onRemove }) => {
     return (
         <div className="container">
             <div className="row">
@@ -38,9 +26,9 @@ const MenuItem = ({ imageName, title, description, price }) => {
                     <div className="card-footer d-flex align-items-center justify-content-between">
                         <p className="card-text-price">Price: ${price}</p>
                         <div className="quantity-control">
-                            <button className="quantity-btn circular" onClick={handleDecrement}> - </button>
+                            <button className="quantity-btn circular" onClick={onRemove}> - </button>
                                 <span className="quantity"> {quantity} </span>
-                            <button className="quantity-btn circular" onClick={handleIncrement}> + </button>
+                            <button className="quantity-btn circular" onClick={onAdd}> + </button>
                         </div>
                     </div>
                 </div>

@@ -65,3 +65,9 @@
   justify-content: center;
   align-items: center;
 }
+
+.cart {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: baseline;
+}
